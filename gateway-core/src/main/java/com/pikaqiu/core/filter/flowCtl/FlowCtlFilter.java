@@ -1,5 +1,6 @@
 package com.pikaqiu.core.filter.flowCtl;
 
+import com.pikaqiu.common.constants.FilterConst;
 import lombok.extern.slf4j.Slf4j;
 import com.pikaqiu.common.config.Rule;
 import com.pikaqiu.core.context.GatewayContext;
@@ -19,7 +20,7 @@ import java.util.Set;
  * @Describe: 限流流控过滤器
  */
 @Slf4j
-@FilterAspect(id = FLOW_CTL_FILTER_ID, name = FLOW_CTL_FILTER_NAME, order = FLOW_CTL_FILTER_ORDER)
+@FilterAspect(id = FilterConst.FLOW_CTL_FILTER_ID, name = FilterConst.FLOW_CTL_FILTER_NAME, order = FilterConst.FLOW_CTL_FILTER_ORDER)
 public class FlowCtlFilter implements Filter {
 
     @Override
@@ -38,10 +39,10 @@ public class FlowCtlFilter implements Filter {
                 }
                 String path = ctx.getRequest().getPath();
                 // 如果是按照路径进行流控
-                if (flowCtlConfig.getType().equalsIgnoreCase(FLOW_CTL_TYPE_PATH) &&
+                if (flowCtlConfig.getType().equalsIgnoreCase(FilterConst.FLOW_CTL_TYPE_PATH) &&
                         path.equals(flowCtlConfig.getValue())) {
                     flowCtlRule = FlowCtlByPathRule.getInstance(rule.getServiceId(), path);
-                } else if (flowCtlConfig.getType().equalsIgnoreCase(FLOW_CTL_TYPE_SERVICE)){
+                } else if (flowCtlConfig.getType().equalsIgnoreCase(FilterConst.FLOW_CTL_TYPE_SERVICE)){
                     // TODO 如果是根据 服务名 进行限流
                 }
                 if (flowCtlRule != null) {

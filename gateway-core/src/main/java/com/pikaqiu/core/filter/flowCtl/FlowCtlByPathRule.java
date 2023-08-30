@@ -3,6 +3,7 @@ package com.pikaqiu.core.filter.flowCtl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.nacos.common.utils.StringUtils;
 import com.pikaqiu.common.config.Rule;
+import com.pikaqiu.common.constants.FilterConst;
 import com.pikaqiu.core.redis.JedisUtil;
 
 import java.util.Map;
@@ -59,16 +60,16 @@ public class FlowCtlByPathRule implements IGatewayFlowCtlRule{
             return;
         }
         Map<String, Integer> configMap = JSON.parseObject(flowCtlConfig.getConfig(), Map.class);
-        if (!configMap.containsKey(FLOW_CTL_LIMIT_DURATION) ||
-                !configMap.containsKey(FLOW_CTL_LIMIT_PERMITS)) {
+        if (!configMap.containsKey(FilterConst.FLOW_CTL_LIMIT_DURATION) ||
+                !configMap.containsKey(FilterConst.FLOW_CTL_LIMIT_PERMITS)) {
             // 如果没有这两个关键参数，则不进行流控了
             return;
         }
         // 拿到 规定时间长度 与 限制次数
-        double duration = configMap.get(FLOW_CTL_LIMIT_DURATION);
-        double permits = configMap.get(FLOW_CTL_LIMIT_PERMITS);
+        double duration = configMap.get(FilterConst.FLOW_CTL_LIMIT_DURATION);
+        double permits = configMap.get(FilterConst.FLOW_CTL_LIMIT_PERMITS);
         boolean flag = true;
-        if (FLOW_CTL_MODEL_DISTRIBUTED.equalsIgnoreCase(flowCtlConfig.getModel())) {
+        if (FilterConst.FLOW_CTL_MODEL_DISTRIBUTED.equalsIgnoreCase(flowCtlConfig.getModel())) {
             // 分布式架构
             StringBuffer buffer = new StringBuffer();
             String key = buffer.append(serviceId).append(DIT_SEPARATOR).append(path).toString();
