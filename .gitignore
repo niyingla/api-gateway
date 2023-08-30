@@ -33,7 +33,7 @@ build/
 
 ### VS Code ###
 .vscode/
-
+.idea
 */logs/
 *.log
 /logs/
