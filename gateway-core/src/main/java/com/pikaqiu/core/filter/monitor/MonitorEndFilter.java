@@ -1,6 +1,7 @@
 package com.pikaqiu.core.filter.monitor;
 
 import com.alibaba.nacos.client.naming.utils.RandomUtils;
+import com.pikaqiu.common.constants.FilterConst;
 import com.sun.net.httpserver.HttpServer;
 import io.micrometer.core.instrument.Timer;
 import io.micrometer.prometheus.PrometheusConfig;
@@ -28,7 +29,7 @@ import java.util.concurrent.TimeUnit;
  * @Describe:
  */
 @Slf4j
-@FilterAspect(id = MONITOR_END_FILTER_ID, name = MONITOR_END_FILTER_NAME, order = MONITOR_END_FILTER_ORDER)
+@FilterAspect(id = FilterConst.MONITOR_END_FILTER_ID, name = FilterConst.MONITOR_END_FILTER_NAME, order = FilterConst.MONITOR_END_FILTER_ORDER)
 public class MonitorEndFilter implements Filter {
 
     // 普罗米修斯的注册表

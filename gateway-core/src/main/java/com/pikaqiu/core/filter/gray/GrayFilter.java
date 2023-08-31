@@ -1,5 +1,6 @@
 package com.pikaqiu.core.filter.gray;
 
+import com.pikaqiu.common.constants.FilterConst;
 import com.pikaqiu.core.filter.Filter;
 import com.pikaqiu.core.filter.FilterAspect;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +16,7 @@ import com.pikaqiu.core.context.GatewayContext;
  * @Describe:
  */
 @Slf4j
-@FilterAspect(id = GRAY_FILTER_ID, name = GRAY_FILTER_NAME, order = GRAY_FILTER_ORDER)
+@FilterAspect(id = FilterConst.GRAY_FILTER_ID, name = FilterConst.GRAY_FILTER_NAME, order = FilterConst.GRAY_FILTER_ORDER)
 public class GrayFilter implements Filter {
 
     @Override

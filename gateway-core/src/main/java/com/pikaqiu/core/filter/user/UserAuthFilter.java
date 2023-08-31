@@ -1,5 +1,6 @@
 package com.pikaqiu.core.filter.user;
 
+import com.pikaqiu.common.constants.FilterConst;
 import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.impl.DefaultClaims;
@@ -21,7 +22,7 @@ import com.pikaqiu.core.filter.FilterAspect;
  * @Describe: 基于 JWT 的用户鉴权
  */
 @Slf4j
-@FilterAspect(id = USER_AUTH_FILTER_ID, name = USER_AUTH_FILTER_NAME, order = USER_AUTH_FILTER_ORDER)
+@FilterAspect(id = FilterConst.USER_AUTH_FILTER_ID, name = FilterConst.USER_AUTH_FILTER_NAME, order = FilterConst.USER_AUTH_FILTER_ORDER)
 public class UserAuthFilter implements Filter {
 
     /**
@@ -41,7 +42,7 @@ public class UserAuthFilter implements Filter {
      */
     @Override
     public void doFilter(GatewayContext ctx) throws Exception {
-        if (ctx.getRule().getFilterConfig(USER_AUTH_FILTER_ID) == null) {
+        if (ctx.getRule().getFilterConfig(FilterConst.USER_AUTH_FILTER_ID) == null) {
             // 如果没有配置鉴权，直接返回
             return;
         }

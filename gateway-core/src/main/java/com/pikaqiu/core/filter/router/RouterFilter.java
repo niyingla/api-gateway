@@ -1,6 +1,7 @@
 package com.pikaqiu.core.filter.router;
 
 import com.netflix.hystrix.*;
+import com.pikaqiu.common.constants.FilterConst;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.asynchttpclient.Request;
@@ -35,7 +36,7 @@ import java.util.concurrent.TimeoutException;
  * @Describe: 路由过滤器类
  */
 @Slf4j
-@FilterAspect(id = ROUTER_FILTER_ID, name = ROUTER_FILTER_NAME, order = ROUTER_FILTER_ORDER)
+@FilterAspect(id = FilterConst.ROUTER_FILTER_ID, name = FilterConst.ROUTER_FILTER_NAME, order = FilterConst.ROUTER_FILTER_ORDER)
 public class RouterFilter implements Filter {
 
     private static Logger accessLog = LoggerFactory.getLogger("accessLog");
@@ -194,6 +195,6 @@ public class RouterFilter implements Filter {
 
     @Override
     public int getOrder() {
-        return ROUTER_FILTER_ORDER;
+        return FilterConst.ROUTER_FILTER_ORDER;
     }
 }

@@ -7,6 +7,7 @@ package com.pikaqiu.core.filter.loadbalance;
 
 
 import com.alibaba.fastjson.JSON;
+import com.pikaqiu.common.constants.FilterConst;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import com.pikaqiu.common.config.Rule;
@@ -32,7 +33,7 @@ import static com.pikaqiu.common.constants.BasicConst.COLON_SEPARATOR;
  * @version
  */
 @Slf4j
-@FilterAspect(id = LOAD_BALANCE_FILTER_ID, name = LOAD_BALANCE_FILTER_NAME, order = LOAD_BALANCE_FILTER_ORDER)
+@FilterAspect(id = FilterConst.LOAD_BALANCE_FILTER_ID, name = FilterConst.LOAD_BALANCE_FILTER_NAME, order = FilterConst.LOAD_BALANCE_FILTER_ORDER)
 public class LoadBalanceFilter implements Filter {
 
     @Override
@@ -69,20 +70,20 @@ public class LoadBalanceFilter implements Filter {
                     continue;
                 }
                 String filterId = filterConfig.getId();
-                if (LOAD_BALANCE_FILTER_ID.equals(filterId)) {
+                if (FilterConst.LOAD_BALANCE_FILTER_ID.equals(filterId)) {
                     // 如果匹配上，直接拿
                     String config = filterConfig.getConfig();
                     // 默认是随机
-                    String strategy = LOAD_BALANCE_STRATEGY_RANDOM;
+                    String strategy = FilterConst.LOAD_BALANCE_STRATEGY_RANDOM;
                     if (StringUtils.isNotEmpty(config)) {
                         Map<String, String> mapTypeMap = JSON.parseObject(config, Map.class);
-                        strategy = mapTypeMap.get(LOAD_BALANCE_KEY);
+                        strategy = mapTypeMap.get(FilterConst.LOAD_BALANCE_KEY);
                     }
                     switch (strategy) {
-                        case LOAD_BALANCE_STRATEGY_RANDOM:
+                        case FilterConst.LOAD_BALANCE_STRATEGY_RANDOM:
                             loadBalanceRule = RandomLoadBalanceRule.getInstance(configRule.getServiceId());
                             break;
-                        case LOAD_BALANCE_STRATEGY_ROUND_ROBIN:
+                        case FilterConst.LOAD_BALANCE_STRATEGY_ROUND_ROBIN:
                             loadBalanceRule = RoundRobinLoadBalanceRule.getInstance(configRule.getServiceId());
                             break;
                         default:
