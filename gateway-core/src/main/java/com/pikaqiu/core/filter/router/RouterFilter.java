@@ -92,7 +92,7 @@ public class RouterFilter implements Filter {
 
     }
 
-    private CompletableFuture<Response> route (GatewayContext gatewayContext, Optional<Rule.HystrixConfig> hystrixConfig) {
+    private CompletableFuture<Response> route(GatewayContext gatewayContext, Optional<Rule.HystrixConfig> hystrixConfig) {
         Request request = gatewayContext.getRequest().build();
         // 发起请求
         CompletableFuture<Response> future = AsyncHttpHelper.getInstance().executeRequest(request);

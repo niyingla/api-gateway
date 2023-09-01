@@ -138,11 +138,11 @@ public class ParallelQueueHandler<E> implements ParallelQueue<E> {
     }
 
 
-    private static <E> void process (EventListener<E> listener, Throwable e, E event) {
+    private static <E> void process(EventListener<E> listener, Throwable e, E event) {
         listener.onException(e, -1, event);
     }
 
-    private static <E> void process (EventListener<E> listener, Throwable e, E... events) {
+    private static <E> void process(EventListener<E> listener, Throwable e, E... events) {
         for (E event : events) {
             process(listener, e, event);
         }
@@ -201,7 +201,7 @@ public class ParallelQueueHandler<E> implements ParallelQueue<E> {
             return this;
         }
 
-        public ParallelQueueHandler<E> build () {
+        public ParallelQueueHandler<E> build() {
             return new ParallelQueueHandler<>(this);
         }
     }
