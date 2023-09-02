@@ -19,7 +19,7 @@ public class JwtTest {
 
     @Test
     public void jwt() {
-        String secureKey = "jianjian";
+        String secureKey = "pikaqiu";
 
         String token = Jwts.builder()
                 .setSubject("10000")

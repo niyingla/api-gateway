@@ -201,9 +201,12 @@ public class GatewayRequest implements IGatewayRequest{
      */
     public Cookie getCookie(String name) {
         if (cookieMap == null) {
-            cookieMap = new HashMap<String, Cookie>();
+            cookieMap = new HashMap<>();
             // 从 header 中拿到 cookie
             String cookieStr = getHeaders().get(HttpHeaderNames.COOKIE);
+            if (StringUtils.isBlank(cookieStr)){
+                return null;
+            }
             // 解析 cookie 成集合
             Set<Cookie> cookies = ServerCookieDecoder.STRICT.decode(cookieStr);
             for (Cookie cookie : cookies) {

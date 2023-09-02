@@ -4,6 +4,7 @@ import com.pikaqiu.common.constants.FilterConst;
 import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.impl.DefaultClaims;
+import io.netty.handler.codec.http.cookie.Cookie;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import com.pikaqiu.common.enums.ResponseCode;
@@ -11,6 +12,8 @@ import com.pikaqiu.common.exception.ResponseException;
 import com.pikaqiu.core.context.GatewayContext;
 import com.pikaqiu.core.filter.Filter;
 import com.pikaqiu.core.filter.FilterAspect;
+
+import java.util.Objects;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,7 +31,7 @@ public class UserAuthFilter implements Filter {
     /**
      * 密钥，不应该在代码中写死
      */
-    private static final String SECRET_KEY = "";
+    private static final String SECRET_KEY = "pikaqiu";
 
     /**
      * 放入 cookie 的名称
@@ -46,7 +49,12 @@ public class UserAuthFilter implements Filter {
             // 如果没有配置鉴权，直接返回
             return;
         }
-        String token = ctx.getRequest().getCookie(COOKIE_NAME).value();
+        Cookie cookie = ctx.getRequest().getCookie(COOKIE_NAME);
+        // 如果没有拿到 cookie，报错
+        if(Objects.isNull(cookie)){
+            throw new ResponseException(ResponseCode.UNAUTHORIZED);
+        }
+        String token = cookie.value();
         // 如果没有拿到 jwt，报错
         if (StringUtils.isBlank(token)) {
             throw new ResponseException(ResponseCode.UNAUTHORIZED);

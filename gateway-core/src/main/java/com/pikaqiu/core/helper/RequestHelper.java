@@ -18,6 +18,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import static com.pikaqiu.common.constants.BasicConst.DIT_SEPARATOR;
 
@@ -126,8 +127,9 @@ public class RequestHelper {
 		if (rule != null) {
 			return rule;
 		}
-		return DynamicConfigManager.getInstance().getRuleByServiceId(serviceId)
-				.stream().filter(r -> gateWayRequest.getPath().startsWith(r.getPrefix()))
+		return DynamicConfigManager.getInstance()
+				.getRuleByServiceId(serviceId).stream().filter(r -> gateWayRequest.getPath().startsWith(r.getPrefix()))
+				//|| Objects.equals(r.getServiceId(), serviceId))
 				.findAny().orElseThrow(() -> new ResponseException(ResponseCode.PATH_NO_MATCHED));
 	}
 }

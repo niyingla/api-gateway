@@ -1,4 +1,5 @@
 package com.pikaqiu.gateway.client.core;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.ProviderConfig;
 import org.apache.dubbo.config.spring.ServiceBean;
@@ -31,6 +32,7 @@ public class ApiAnnotationScanner {
 
     /**
      * 扫描传入的 bean 对象，最终返回一个服务定义
+     *
      * @param bean
      * @param args
      * @return
@@ -52,7 +54,7 @@ public class ApiAnnotationScanner {
         Map<String, ServiceInvoker> invokerMap = new HashMap<>();
         // 扫描目标类上的所有方法
         Method[] methods = aClass.getMethods();
-        if (methods != null && methods.length > 0) {
+        if (methods.length > 0) {
             for (Method method : methods) {
                 // 尝试拿到 ApiInvoker 注解
                 ApiInvoker apiInvoker = method.getAnnotation(ApiInvoker.class);
@@ -66,22 +68,22 @@ public class ApiAnnotationScanner {
                 // 判断服务协议
                 switch (protocol) {
                     // 根据访问路径，构造最最最后的访问路径
-                    case HTTP:
+                    case HTTP -> {
                         HttpServiceInvoker httpServiceInvoker = createHttpServiceInvoker(path);
                         invokerMap.put(path, httpServiceInvoker);
-                        break;
-                    case DUBBO:
+                    }
+                    // dubbo服务
+                    case DUBBO -> {
                         ServiceBean<?> serviceBean = (ServiceBean<?>) args[0];
                         DubboServiceInvoker dubboServiceInvoker = createDubboServiceInvoker(path, serviceBean, method);
-
                         String dubboVersion = dubboServiceInvoker.getVersion();
                         if (!StringUtils.isBlank(dubboVersion)) {
                             version = dubboVersion;
                         }
                         invokerMap.put(path, dubboServiceInvoker);
-                        break;
-                    default:
-                        break;
+                    }
+                    default -> {
+                    }
                 }
             }
 
@@ -113,7 +115,7 @@ public class ApiAnnotationScanner {
     /**
      * 构建DubboServiceInvoker对象
      */
-    private DubboServiceInvoker createDubboServiceInvoker (String path, ServiceBean<?> serviceBean, Method method) {
+    private DubboServiceInvoker createDubboServiceInvoker(String path, ServiceBean<?> serviceBean, Method method) {
         DubboServiceInvoker dubboServiceInvoker = new DubboServiceInvoker();
         dubboServiceInvoker.setInvokerPath(path);
 

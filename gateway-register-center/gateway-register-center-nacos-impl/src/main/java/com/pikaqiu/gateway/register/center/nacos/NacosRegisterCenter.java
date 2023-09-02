@@ -114,7 +114,7 @@ public class NacosRegisterCenter implements RegisterCenter {
             namingMaintainService.updateService(serviceDefinition.getServiceId(), env, 0,
                     Map.of(GatewayConst.META_DATA_KEY, JSON.toJSONString(serviceDefinition)));
 
-            log.info("【注册中心】注册完成： {} {}", serviceDefinition, serviceInstance);
+            log.info("【注册中心】注册完成： {} {}", JSON.toJSONString(serviceDefinition), JSON.toJSONString(serviceInstance));
         } catch (NacosException e) {
             throw new RuntimeException(e);
         }
@@ -148,7 +148,7 @@ public class NacosRegisterCenter implements RegisterCenter {
         // 可能有新服务加入，所以需要有一个定时任务来检查
         ScheduledExecutorService scheduledThreadPool = Executors
                 .newScheduledThreadPool(1, new NameThreadFactory("doSubscribeAllServices"));
-        scheduledThreadPool.scheduleWithFixedDelay(() -> doSubscribeAllServices(),
+        scheduledThreadPool.scheduleWithFixedDelay(this::doSubscribeAllServices,
                 10, 10, TimeUnit.SECONDS);
 
     }
@@ -206,9 +206,8 @@ public class NacosRegisterCenter implements RegisterCenter {
 
         @Override
         public void onEvent(Event event) {
-            if (event instanceof NamingEvent) {
+            if (event instanceof NamingEvent namingEvent) {
 
-                NamingEvent namingEvent = (NamingEvent) event;
                 String serviceName = namingEvent.getServiceName();
 
                 try {

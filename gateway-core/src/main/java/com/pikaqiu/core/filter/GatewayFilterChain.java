@@ -5,6 +5,11 @@
  */
 package com.pikaqiu.core.filter;
 
+import com.pikaqiu.common.enums.ResponseCode;
+import com.pikaqiu.common.exception.BaseException;
+import com.pikaqiu.common.exception.ResponseException;
+import com.pikaqiu.core.helper.ResponseHelper;
+import io.netty.handler.codec.http.HttpResponseStatus;
 import lombok.extern.slf4j.Slf4j;
 import com.pikaqiu.core.context.GatewayContext;
 
@@ -60,9 +65,13 @@ public class GatewayFilterChain {
             for (Filter filter : filterList) {
                 filter.doFilter(ctx);
             }
+        } catch (BaseException e) {
+            log.error("执行过滤器发生异常,异常信息：", e);
+            throw new ResponseException(e.getCode());
         } catch (Exception e) {
             // 发生异常后处理
-            log.error("执行过滤器发生异常,异常信息：{}", e.getMessage());
+            log.error("执行过滤器发生异常,异常信息：", e);
+            throw new ResponseException(ResponseCode.INTERNAL_ERROR);
         }
         return ctx;
     }

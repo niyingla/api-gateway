@@ -22,7 +22,6 @@ public class PingController {
     @GetMapping("/http-server/ping")
     public String ping() throws InterruptedException {
         log.info("{}", apiProperties);
-        Thread.sleep(800);
         return "pong";
     }
 }

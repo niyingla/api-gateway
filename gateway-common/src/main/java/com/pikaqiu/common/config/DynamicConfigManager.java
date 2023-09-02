@@ -54,8 +54,7 @@ public class DynamicConfigManager {
 		return SingletonHolder.INSTANCE;
 	}
 
-	public void putServiceDefinition(String uniqueId,
-			ServiceDefinition serviceDefinition) {
+	public void putServiceDefinition(String uniqueId, ServiceDefinition serviceDefinition) {
 
 		serviceDefinitionMap.put(uniqueId, serviceDefinition);;
 	}
