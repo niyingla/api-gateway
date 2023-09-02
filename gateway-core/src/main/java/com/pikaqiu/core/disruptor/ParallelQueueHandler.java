@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 
 /**
  * Created by IntelliJ IDEA.
- * tech.songjian.core.disruptor
+ * com.pikaqiu.core.disruptor
  *
  * @Author: SongJian
  * @Create: 2023/6/13 20:40
@@ -30,10 +30,13 @@ public class ParallelQueueHandler<E> implements ParallelQueue<E> {
     private EventTranslatorOneArg<Holder, E> eventTranslator;
 
     public ParallelQueueHandler(Builder<E> builder) {
+        //创建专属线程池
         this.executorService = Executors.newFixedThreadPool(builder.threads,
                 new ThreadFactoryBuilder()
                         .setNameFormat("ParallelQueueHandler" + builder.namePrefix + "-pool-%d").build());
+        //设置请求事件监听器
         this.eventListener = builder.listener;
+        //创建事件转换器
         this.eventTranslator = new HolderEventTranslator();
 
         // 创建 RingBuffer

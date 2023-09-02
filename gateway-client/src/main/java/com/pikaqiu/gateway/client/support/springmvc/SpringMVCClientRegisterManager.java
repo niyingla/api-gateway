@@ -1,7 +1,7 @@
 /**
  * @projectName JianGateWay
- * @package tech.songjian.gateway.client.support.springmvc
- * @className tech.songjian.gateway.client.support.springmvc.SpringMVCClientRegisterManager
+ * @package com.pikaqiu.gateway.client.support.springmvc
+ * @className com.pikaqiu.gateway.client.support.springmvc.SpringMVCClientRegisterManager
  */
 package com.pikaqiu.gateway.client.support.springmvc;
 

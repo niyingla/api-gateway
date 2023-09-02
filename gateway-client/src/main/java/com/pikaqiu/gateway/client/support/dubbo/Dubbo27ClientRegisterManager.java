@@ -1,7 +1,7 @@
 /**
  * @projectName JianGateWay
- * @package tech.songjian.gateway.client.support.dubbo
- * @className tech.songjian.gateway.client.support.dubbo.Dubbo27ClientRegisterManager
+ * @package com.pikaqiu.gateway.client.support.dubbo
+ * @className com.pikaqiu.gateway.client.support.dubbo.Dubbo27ClientRegisterManager
  */
 package com.pikaqiu.gateway.client.support.dubbo;
 

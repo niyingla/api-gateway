@@ -8,7 +8,7 @@ import com.pikaqiu.core.context.GatewayContext;
 
 /**
  * Created by IntelliJ IDEA.
- * tech.songjian.core.filter.gray
+ * com.pikaqiu.core.filter.gray
  *
  * @Author: SongJian
  * @Create: 2023/6/13 12:01

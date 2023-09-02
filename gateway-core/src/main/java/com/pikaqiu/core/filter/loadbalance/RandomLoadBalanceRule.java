@@ -1,7 +1,7 @@
 /**
  * @projectName JianGateWay
- * @package tech.songjian.core.filter.loadbalance
- * @className tech.songjian.core.filter.loadbalance.RandomLoadBalanceRule
+ * @package com.pikaqiu.core.filter.loadbalance
+ * @className com.pikaqiu.core.filter.loadbalance.RandomLoadBalanceRule
  */
 package com.pikaqiu.core.filter.loadbalance;
 

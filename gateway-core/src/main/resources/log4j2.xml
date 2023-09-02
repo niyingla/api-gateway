@@ -44,7 +44,7 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="tech.songjian.gateway.core.*" level="info" includeLocation="true">
+        <Logger name="com.pikaqiu.gateway.core.*" level="info" includeLocation="true">
             <AppenderRef ref="RandomAccessFile"/>
         </Logger>
 

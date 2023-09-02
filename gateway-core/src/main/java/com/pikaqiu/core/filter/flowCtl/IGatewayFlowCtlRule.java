@@ -4,7 +4,7 @@ import com.pikaqiu.common.config.Rule;
 
 /**
  * Created by IntelliJ IDEA.
- * tech.songjian.core.filter.flowCtl
+ * com.pikaqiu.core.filter.flowCtl
  *
  * @Author: SongJian
  * @Create: 2023/6/12 20:03

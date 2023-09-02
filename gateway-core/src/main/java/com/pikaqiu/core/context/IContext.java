@@ -1,7 +1,7 @@
 /**
  * @projectName JianGateWay
- * @package tech.songjian.core.context
- * @className tech.songjian.core.context.IContext
+ * @package com.pikaqiu.core.context
+ * @className com.pikaqiu.core.context.IContext
  */
 package com.pikaqiu.core.context;
 

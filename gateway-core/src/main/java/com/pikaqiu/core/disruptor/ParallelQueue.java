@@ -2,7 +2,7 @@ package com.pikaqiu.core.disruptor;
 
 /**
  * Created by IntelliJ IDEA.
- * tech.songjian.core.disruptor
+ * com.pikaqiu.core.disruptor
  *
  * @Author: SongJian
  * @Create: 2023/6/13 20:36

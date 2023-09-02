@@ -1,7 +1,7 @@
 /**
  * @projectName JianGateWay
- * @package tech.songjian.gateway.client.core.autoconfigure
- * @className tech.songjian.gateway.client.core.autoconfigure.ApiClientAutoConfiguration
+ * @package com.pikaqiu.gateway.client.core.autoconfigure
+ * @className com.pikaqiu.gateway.client.core.autoconfigure.ApiClientAutoConfiguration
  */
 package com.pikaqiu.gateway.client.core.autoconfigure;
 

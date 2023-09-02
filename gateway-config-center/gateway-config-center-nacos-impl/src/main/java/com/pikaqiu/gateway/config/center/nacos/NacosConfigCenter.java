@@ -1,7 +1,7 @@
 /**
  * @projectName JianGateWay
- * @package tech.songjian.gateway.config.center.nacos
- * @className tech.songjian.gateway.config.center.nacos.NacosConfigCenter
+ * @package com.pikaqiu.gateway.config.center.nacos
+ * @className com.pikaqiu.gateway.config.center.nacos.NacosConfigCenter
  */
 package com.pikaqiu.gateway.config.center.nacos;
 

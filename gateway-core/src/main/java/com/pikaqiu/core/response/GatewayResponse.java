@@ -1,7 +1,7 @@
 /**
  * @projectName JianGateWay
- * @package tech.songjian.core.response
- * @className tech.songjian.core.response.GatewayResponse
+ * @package com.pikaqiu.core.response
+ * @className com.pikaqiu.core.response.GatewayResponse
  */
 package com.pikaqiu.core.response;
 

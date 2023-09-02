@@ -1,7 +1,7 @@
 /**
  * @projectName JianGateWay
- * @package tech.songjian.gateway.register.center.api
- * @className tech.songjian.gateway.register.center.api.RegisterCenter
+ * @package com.pikaqiu.gateway.register.center.api
+ * @className com.pikaqiu.gateway.register.center.api.RegisterCenter
  */
 package com.pikaqiu.gateway.register.center.api;
 

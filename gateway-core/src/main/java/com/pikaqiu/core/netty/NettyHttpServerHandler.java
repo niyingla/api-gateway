@@ -1,7 +1,7 @@
 /**
  * @projectName JianGateWay
- * @package tech.songjian.core.netty
- * @className tech.songjian.core.netty.NettyHttpServerHandler
+ * @package com.pikaqiu.core.netty
+ * @className com.pikaqiu.core.netty.NettyHttpServerHandler
  */
 package com.pikaqiu.core.netty;
 

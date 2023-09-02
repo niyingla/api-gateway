@@ -1,7 +1,7 @@
 /**
  * @projectName JianGateWay
- * @package tech.songjian.core.netty.processor
- * @className tech.songjian.core.netty.processor.NettyCoreProcess
+ * @package com.pikaqiu.core.netty.processor
+ * @className com.pikaqiu.core.netty.processor.NettyCoreProcess
  */
 package com.pikaqiu.core.netty.processor;
 

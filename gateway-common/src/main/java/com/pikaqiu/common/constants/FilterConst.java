@@ -1,7 +1,7 @@
 /**
  * @projectName JianGateWay
- * @package tech.songjian.common.constants
- * @className tech.songjian.common.constants.FilterConst
+ * @package com.pikaqiu.common.constants
+ * @className com.pikaqiu.common.constants.FilterConst
  */
 package com.pikaqiu.common.constants;
 

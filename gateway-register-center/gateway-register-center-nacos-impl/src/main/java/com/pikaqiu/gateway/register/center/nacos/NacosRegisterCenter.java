@@ -1,7 +1,7 @@
 /**
  * @projectName JianGateWay
- * @package tech.songjian.gateway.register.center.nacos
- * @className tech.songjian.gateway.register.center.nacos.NacosRegisterCenter
+ * @package com.pikaqiu.gateway.register.center.nacos
+ * @className com.pikaqiu.gateway.register.center.nacos.NacosRegisterCenter
  */
 package com.pikaqiu.gateway.register.center.nacos;
 
@@ -227,7 +227,7 @@ public class NacosRegisterCenter implements RegisterCenter {
                         set.add(serviceInstance);
                     }
                     // 调用注册中心的监听器，将服务定义和服务实例进行缓存
-                    registerCenterListenerList.stream().forEach(l -> l.onChange(serviceDefinition, set));
+                    registerCenterListenerList.forEach(l -> l.onChange(serviceDefinition, set));
                     log.info("【注册中心】监听到 Nacos 事件，完成更新！");
                 } catch (NacosException e) {
                     throw new RuntimeException(e);

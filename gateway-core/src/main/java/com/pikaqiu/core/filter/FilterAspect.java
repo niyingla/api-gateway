@@ -1,7 +1,7 @@
 /**
  * @projectName JianGateWay
- * @package tech.songjian.core.filter
- * @className tech.songjian.core.filter.FilterAspect
+ * @package com.pikaqiu.core.filter
+ * @className com.pikaqiu.core.filter.FilterAspect
  */
 package com.pikaqiu.core.filter;
 

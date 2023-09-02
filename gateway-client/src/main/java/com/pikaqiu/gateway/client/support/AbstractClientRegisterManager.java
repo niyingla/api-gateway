@@ -1,7 +1,7 @@
 /**
  * @projectName JianGateWay
- * @package tech.songjian.gateway.client.support
- * @className tech.songjian.gateway.client.support.AbstractClientRegisterManager
+ * @package com.pikaqiu.gateway.client.support
+ * @className com.pikaqiu.gateway.client.support.AbstractClientRegisterManager
  */
 package com.pikaqiu.gateway.client.support;
 

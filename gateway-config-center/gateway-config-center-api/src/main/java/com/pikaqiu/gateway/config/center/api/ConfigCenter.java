@@ -1,7 +1,7 @@
 /**
  * @projectName JianGateWay
- * @package tech.songjian.gateway.config.center.api
- * @className tech.songjian.gateway.config.center.api.ConfigCenter
+ * @package com.pikaqiu.gateway.config.center.api
+ * @className com.pikaqiu.gateway.config.center.api.ConfigCenter
  */
 package com.pikaqiu.gateway.config.center.api;
 

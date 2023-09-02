@@ -1,7 +1,7 @@
 /**
  * @projectName JianGateWay
- * @package tech.songjian.core.netty
- * @className tech.songjian.core.request.HttpRequestWrapper
+ * @package com.pikaqiu.core.netty
+ * @className com.pikaqiu.core.request.HttpRequestWrapper
  */
 package com.pikaqiu.core.request;
 
