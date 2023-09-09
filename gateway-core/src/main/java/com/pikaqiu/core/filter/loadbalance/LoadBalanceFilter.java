@@ -62,10 +62,10 @@ public class LoadBalanceFilter implements Filter {
         Rule configRule = ctx.getRule();
         if (configRule != null) {
             Set<Rule.FilterConfig> filterConfigs = configRule.getFilterConfigs();
-            Iterator iterator = filterConfigs.iterator();
+            Iterator<Rule.FilterConfig> iterator = filterConfigs.iterator();
             Rule.FilterConfig filterConfig;
             while (iterator.hasNext()) {
-                filterConfig = (Rule.FilterConfig) iterator.next();
+                filterConfig = iterator.next();
                 if (filterConfig == null) {
                     continue;
                 }

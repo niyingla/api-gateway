@@ -40,14 +40,15 @@ import java.util.concurrent.TimeoutException;
 public class RouterFilter implements Filter {
 
     private static Logger accessLog = LoggerFactory.getLogger("accessLog");
+
     /**
      * 路由请求转发
+     *
      * @param gatewayContext
      * @throws Exception
      */
     @Override
     public void doFilter(GatewayContext gatewayContext) throws Exception {
-
         // Optional 可以对可能缺失的值进行建模，而不是直接将 null 赋值给变量。
         Optional<Rule.HystrixConfig> hystrixConfig = getHystrixConfig(gatewayContext);
         if (hystrixConfig.isPresent()) {
@@ -75,7 +76,7 @@ public class RouterFilter implements Filter {
                         .withExecutionTimeoutInMilliseconds(hystrixConfig.get().getTimeoutInMilliseconds())
                         .withExecutionIsolationThreadInterruptOnTimeout(true)
                         .withExecutionTimeoutEnabled(true));
-        new HystrixCommand<Object> (setter) {
+        new HystrixCommand<Object>(setter) {
             @Override
             protected Object run() throws Exception {
                 route(gatewayContext, hystrixConfig).get();
@@ -99,25 +100,19 @@ public class RouterFilter implements Filter {
 
         boolean whenComplete = ConfigLoader.getConfig().isWhenComplete();
         if (whenComplete) {
-            // 单异步模式
-            future.whenComplete((response, throwable) -> {
-                complete(request, response, throwable, gatewayContext, hystrixConfig);
-            });
+            future.whenComplete((response, throwable) -> complete(request, response, throwable, gatewayContext, hystrixConfig));
         } else {
             // 双异步模式
-            future.whenCompleteAsync((response, throwable) -> {
-                complete(request, response, throwable, gatewayContext, hystrixConfig);
-            });
+            future.whenCompleteAsync((response, throwable) -> complete(request, response, throwable, gatewayContext, hystrixConfig));
         }
         return future;
     }
 
 
-    private static Optional<Rule.HystrixConfig> getHystrixConfig (GatewayContext gatewayContext) {
+    private static Optional<Rule.HystrixConfig> getHystrixConfig(GatewayContext gatewayContext) {
         Rule rule = gatewayContext.getRule();
-        Optional<Rule.HystrixConfig> hystrixConfig = rule.getHystrixConfigs().stream()
+        return rule.getHystrixConfigs().stream()
                 .filter(c -> StringUtils.equals(c.getPath(), gatewayContext.getRequest().getPath())).findFirst();
-        return hystrixConfig;
     }
 
     private void complete(Request request,
@@ -179,6 +174,7 @@ public class RouterFilter implements Filter {
 
     /**
      * 重试
+     *
      * @param gatewayContext
      * @param currentRetryTimes
      */
